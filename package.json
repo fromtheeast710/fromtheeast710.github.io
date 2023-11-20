@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
-    "test": "vitest"
+    "test": "vitest",
+    "postbuild": "purgecss --css build/static/css/*.css --content build/index.html build/static/js/*.js --output build/static/css"
   },
   "devDependencies": {
     "@skeletonlabs/skeleton": "2.5.0",
@@ -16,7 +17,6 @@
     "@sveltejs/adapter-static": "^2.0.3",
     "@sveltejs/kit": "^1.27.6",
     "@tabler/icons-svelte": "^2.41.0",
-    "@tailwindcss/typography": "0.5.10",
     "autoprefixer": "10.4.16",
     "postcss": "8.4.31",
     "svelte": "^4.2.5",

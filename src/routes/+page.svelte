@@ -1,22 +1,21 @@
 <script>
-  import { IconArrowBigDownLinesFilled, IconArrowBigUpLinesFilled 
-  } from "@tabler/icons-svelte"
+  import Page0 from "$lib/layout/Page0.svelte";
+  import { pageNo } from "$lib/scripts/page";
 </script>
 
 <div class="container mx-0 flex">
   <div class="ml-[5rem] mt-9">
-    <h1 class="h1 pb-4">Welcome</h1>
-    <ul class="justify-center justify-items-center align-middle">
-      <p>This is my personal page.</p>
-      <!-- <p>Use <IconArrowBigDownLinesFilled class="icon"/> to move down the <i>waves</i>.</p>
-      <p>Use <IconArrowBigUpLinesFilled class="icon"/> to move up the <i>waves</i>.</p> -->
-    </ul>
+    {#if $pageNo == 0}
+      <Page0/>
+    {:else if $pageNo == 1}
+      <h1>About me</h1>
+      <p>I am an ICT student.</p>
+    {:else if $pageNo == 2}
+      <h1>Interests</h1>
+    {:else if $pageNo == 3}
+      <h1>Gallery</h1>
+    {:else if $pageNo == 4}
+      <h1>Credits</h1>
+    {/if}
   </div>
 </div>
-
-<style>
-  p {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-</style>

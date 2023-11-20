@@ -1,5 +1,4 @@
 import { join } from 'path'
-import typography from '@tailwindcss/typography';
 import { skeleton } from '@skeletonlabs/tw-plugin'
 
 /** @type {import('tailwindcss').Config} */
@@ -10,7 +9,6 @@ export default {
 		extend: {},
 	},
 	plugins: [
-		typography,
 		skeleton({
 			themes: {
 				preset: [

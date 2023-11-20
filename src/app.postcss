@@ -14,7 +14,22 @@
   @apply shadow-lg;
 }
 .icon {
-  display: inline;
-  width: 19px;
+  display: inline; 
+  width: 28px;
+  @apply kbd;
+}
+.navbar {
+  width: 230px;
+  height: 280px;
+  top: 50%;
+  left: 82%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  align-content: center;
+  padding: 3rem;
+  @apply z-50 shadow-md variant-filled-tertiary;
 }
 body {height:100%; overflow: hidden}
+h1 {@apply h1 pb-9}
+p {font-size: 1.25rem; line-height: 1.75rem}
