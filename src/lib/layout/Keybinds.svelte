@@ -2,13 +2,11 @@
   import { pageNo, showNavbar } from "$lib/scripts/page";
 
   function handleKey({ keyCode }) {
-    if(keyCode != 38 && keyCode != 40 && keyCode != 37) return;
+    if(keyCode != 37 && keyCode != 38 && keyCode != 40) return;
 
     function pageChange() {
-      let newPage;
-
       if($pageNo === -1) $pageNo = 4;
-      else if($pageNo >= 5) $pageNo = 0;
+      else if($pageNo === 5) $pageNo = 0;
     }
 
     switch(keyCode) {
@@ -17,18 +15,13 @@
         break;
 
       case 38:
-        $pageNo++;
+        $pageNo--;
         pageChange();
-        console.log($pageNo)
         break;
 
       case 40:
-        $pageNo--;
+        $pageNo++;
         pageChange();
-        console.log($pageNo)
-        break;
-
-      default:
         break;
     }
   }
