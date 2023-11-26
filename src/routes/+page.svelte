@@ -1,21 +1,24 @@
 <script>
   import Page0 from "$lib/layout/Page0.svelte";
+  import Page1 from "$lib/layout/Page1.svelte";
+  import Page2 from "$lib/layout/Page2.svelte";
+  import Page3 from "$lib/layout/Page3.svelte";
+  import Page4 from "$lib/layout/Page4.svelte";
   import { pageNo } from "$lib/scripts/page";
 </script>
 
 <div class="container mx-0 flex">
-  <div class="ml-[5rem] mt-9">
+  <div class="ml-[5rem] mt-11">
     {#if $pageNo == 0}
       <Page0/>
     {:else if $pageNo == 1}
-      <h1>About me</h1>
-      <p>I am an ICT student.</p>
+      <Page1/>
     {:else if $pageNo == 2}
-      <h1>Interests</h1>
+      <Page2/>
     {:else if $pageNo == 3}
-      <h1>Gallery</h1>
+      <Page3/>
     {:else if $pageNo == 4}
-      <h1>Credits</h1>
+      <Page4/>
     {/if}
   </div>
 </div>
