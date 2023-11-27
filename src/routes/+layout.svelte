@@ -6,12 +6,12 @@
 	import { showNavbar } from '$lib/scripts/utils';
 </script>
 
-<!-- <slot/> -->
+<slot/>
 
 {#if $showNavbar}
 	 <Navbar/>
 {/if}
 
-<!-- <Keybinds/> -->
+<Keybinds/>
 
 <LayeredWaves className="layered-waves"/>
