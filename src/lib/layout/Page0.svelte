@@ -7,8 +7,8 @@
 </script>
 
 <h1>Welcome</h1>
-<ul class="justify-center justify-items-center align-middle">
-  <p>This is my personal page.</p>
+<ul class="content justify-center justify-items-center align-middle">
+  <p>This is my personal page. Work in progress.</p>
   <p>
     Press <IconArrowBigDownLinesFilled class="icon" /> to move down the
     <i class="gradient-text">waves</i>.
@@ -22,10 +22,10 @@
   </p>
 </ul>
 
-<style>
+<style lang="postcss">
   .gradient-text {
-    @apply bg-clip-text text-transparent box-decoration-clone;
-    @apply bg-gradient-to-br;
-    @apply from-primary-300 via-tertiary-500 to-secondary-500;
+    @apply bg-clip-text text-transparent box-decoration-clone
+           bg-gradient-to-br
+           from-primary-300 via-tertiary-500 to-secondary-500;
   }
 </style>
