@@ -4,7 +4,7 @@
   import Page2 from "$lib/layout/Page2.svelte";
   import Page3 from "$lib/layout/Page3.svelte";
   import Page4 from "$lib/layout/Page4.svelte";
-  import { pageNo } from "$lib/scripts/page";
+  import { pageNo } from "$lib/scripts/utils";
 </script>
 
 <div class="container mx-0 flex">

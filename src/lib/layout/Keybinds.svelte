@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pageNo, showNavbar } from "$lib/scripts/page";
+  import { pageNo, showNavbar } from "$lib/scripts/utils";
 
   function handleKey({ keyCode }) {
     if(keyCode != 37 && keyCode != 38 && keyCode != 40) return;
