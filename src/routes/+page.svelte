@@ -22,8 +22,7 @@
 <!-- 
   To be worked on:
     + SVG and Elements layering
-    + In and Out animations for header
+    + In and Out animations for page content and header
     + SVG alignment and scaling with the screen
     + Animation logic for pages
-    + Table of Content navigation and animation
 -->

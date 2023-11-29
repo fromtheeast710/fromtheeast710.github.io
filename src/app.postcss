@@ -21,30 +21,18 @@
 }
 
 .layered-waves {
-	aspect-ratio: 960/2700;
+	/* aspect-ratio: 960/2700; */
 	width: 100%;
-  bottom: -137%;
-	/* background-repeat: no-repeat;
+  bottom: -137vh;
+	background-repeat: no-repeat;
 	background-position: center bottom;
-	background-size: cover; */
+	background-size: cover;
   @apply shadow-xl fixed -z-10;
 }
 .icon {
   display: inline; 
   width: 28px;
   @apply kbd;
-}
-.navbar {
-  width: 230px;
-  height: 280px;
-  top: 50%;
-  left: 82%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  border-radius: 4px;
-  align-content: center;
-  padding: 3rem;
-  @apply z-50 shadow-md variant-filled-tertiary;
 }
 .content {
   top: 55%;
@@ -61,12 +49,9 @@
 body { height: 100%; overflow: hidden }
 h1 {
   animation: move-in 1s ease-out;
-  @apply h1 p-[4rem] pt-[6rem] ml-8;
+  @apply h1 p-[4rem] pt-[6rem] ml-8 fixed;
 }
 p { @apply text-xl leading-8 }
-path {
-  animation-fill-mode: forwards;
-}
 
 :root {
   --tw-scale-x: 113%;
