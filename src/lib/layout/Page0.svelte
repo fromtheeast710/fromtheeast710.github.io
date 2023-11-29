@@ -10,15 +10,15 @@
 <ul class="content justify-center justify-items-center align-middle">
   <p>This is my personal page. Work in progress.</p>
   <p>
-    Press <IconArrowBigDownLinesFilled class="icon" /> to move down the
+    Press <IconArrowBigDownLinesFilled class="icon"/> to move down the
     <i class="gradient-text">waves</i>.
   </p>
   <p>
-    Press <IconArrowBigUpLinesFilled class="icon" /> to move up the
+    Press <IconArrowBigUpLinesFilled class="icon"/> to move up the
     <i class="gradient-text">waves</i>.
   </p>
   <p>
-    Press <IconArrowBigLeftLinesFilled class="icon" /> to show the navbar.
+    Press <IconArrowBigLeftLinesFilled class="icon"/> to show the navbar.
   </p>
 </ul>
 

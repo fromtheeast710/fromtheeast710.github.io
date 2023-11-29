@@ -7,18 +7,23 @@
   import { pageNo } from "$lib/scripts/utils";
 </script>
 
-<div class="container mx-0 flex">
-  <div class="ml-[5rem] mt-11">
-    {#if $pageNo == 0}
-      <Page0/>
-    {:else if $pageNo == 1}
-      <Page1/>
-    {:else if $pageNo == 2}
-      <Page2/>
-    {:else if $pageNo == 3}
-      <Page3/>
-    {:else if $pageNo == 4}
-      <Page4/>
-    {/if}
-  </div>
-</div>
+{#if $pageNo == 0}
+  <Page0/>
+{:else if $pageNo == 1}
+  <Page1/>
+{:else if $pageNo == 2}
+  <Page2/>
+{:else if $pageNo == 3}
+  <Page3/>
+{:else if $pageNo == 4}
+  <Page4/>
+{/if}
+
+<!-- 
+  To be worked on:
+    + SVG and Elements layering
+    + In and Out animations for header
+    + SVG alignment and scaling with the screen
+    + Animation logic for pages
+    + Table of Content navigation and animation
+-->
