@@ -1,7 +1,50 @@
 <script>
-  import { pageNo } from "$lib/scripts/utils";
+  // @ts-nocheck
+  import { pageNo, isUp } from "$lib/scripts/utils";
 
   export let className = "";
+
+  function tide() { 
+    var wave1 = document.getElementById("wave1");
+    var wave2 = document.getElementById("wave2");
+    var wave3 = document.getElementById("wave3");
+    var wave4 = document.getElementById("wave4");
+    const tideRise = [{ transform: "translateY(-81.5vh)" }];
+    const tideFall = [{ transform: "translateY(0vh)" }];
+    const tideTiming = {
+      duration: 1000,
+      easing: "ease-in-out",
+      iterations: 1,
+      fill: "forwards",
+    };
+
+    if($pageNo === 1) {
+      wave1?.animate(tideRise, tideTiming);
+      wave2?.animate(tideFall, tideTiming);
+      wave3?.animate(tideFall, tideTiming);
+      wave4?.animate(tideFall, tideTiming);
+    } else if($pageNo === 2) {
+      wave1?.animate(tideRise, tideTiming);
+      wave2?.animate(tideRise, tideTiming);
+      wave3?.animate(tideFall, tideTiming);
+      wave4?.animate(tideFall, tideTiming);
+    } else if($pageNo === 3) {
+      wave1?.animate(tideRise, tideTiming);
+      wave2?.animate(tideRise, tideTiming);
+      wave3?.animate(tideRise, tideTiming);
+      wave4?.animate(tideFall, tideTiming);
+    } else if($pageNo === 4) {
+      wave1?.animate(tideRise, tideTiming);
+      wave2?.animate(tideRise, tideTiming);
+      wave3?.animate(tideRise, tideTiming);
+      wave4?.animate(tideRise, tideTiming);
+    } else if($pageNo === 0) {
+      wave1?.animate(tideFall, tideTiming);
+      wave2?.animate(tideFall, tideTiming);
+      wave3?.animate(tideFall, tideTiming);
+      wave4?.animate(tideFall, tideTiming);
+    }
+  }
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions a11y-click-events-have-key-events -->
@@ -45,3 +88,5 @@
     on:click={() => pageNo.set(4)}
   />
 </svg>
+
+<svelte:window on:click={tide}/>
