@@ -21,8 +21,6 @@
 
 <!-- 
   TODO:
-    + SVG and Elements layering
     + SVG alignment and scaling with the screen
-    + Component to streamline page creation
     + Better animation logic
 -->
