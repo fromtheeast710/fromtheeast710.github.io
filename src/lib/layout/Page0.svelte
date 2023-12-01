@@ -2,25 +2,20 @@
   import {
     IconArrowBigDownLinesFilled,
     IconArrowBigUpLinesFilled,
-    IconArrowBigLeftLinesFilled,
+    IconHandClick
   } from "@tabler/icons-svelte";
+  import Page from "./Page.svelte";
 </script>
 
-<h1>Welcome</h1>
-<ul class="content justify-center justify-items-center align-middle">
-  <p>This is my personal page. Work in progress.</p>
-  <p>
-    Press <IconArrowBigDownLinesFilled class="icon"/> to move down the
-    <i class="gradient-text">waves</i>.
-  </p>
-  <p>
-    Press <IconArrowBigUpLinesFilled class="icon"/> to move up the
-    <i class="gradient-text">waves</i>.
-  </p>
-  <p>
-    Press <IconArrowBigLeftLinesFilled class="icon"/> to show the navbar.
-  </p>
-</ul>
+<Page title="Welcome" offsetX=0>
+  <ul class="content justify-center justify-items-center align-middle">
+    <p>This is my personal page, a place for me to show off my work.</p>
+    <p>
+      Press <IconArrowBigDownLinesFilled class="icon"/>, <IconArrowBigUpLinesFilled class="icon"/> or click <IconHandClick class="icon"/> to navigate the
+      <i class="gradient-text">waves</i>.
+    </p>
+  </ul>
+</Page>
 
 <style lang="postcss">
   .gradient-text {
