@@ -18,30 +18,30 @@ export function tide(n) {
     fill: "forwards",
   };
 
-  if (n === 1) {
+  if(n === 1) {
     wave1?.animate(tideRise, tideTiming);
-    wave2?.animate(tideFall, tideTiming);
-    wave3?.animate(tideFall, tideTiming);
-    wave4?.animate(tideFall, tideTiming);
+    wave2?.animate(tideFall, { duration: 1400, easing: "ease-out", fill: "forwards" });
+    wave3?.animate(tideFall, { duration: 1200, easing: "ease-out", fill: "forwards" });
+    wave4?.animate(tideFall, { duration: 1000, easing: "ease-out", fill: "forwards" });
   } else if(n === 2) {
     wave1?.animate(tideRise, tideTiming);
     wave2?.animate(tideRise, tideTiming);
-    wave3?.animate(tideFall, tideTiming);
-    wave4?.animate(tideFall, tideTiming);
+    wave3?.animate(tideFall, { duration: 1200, easing: "ease-out", fill: "forwards" });
+    wave4?.animate(tideFall, { duration: 1000, easing: "ease-out", fill: "forwards" });
   } else if(n === 3) {
     wave1?.animate(tideRise, tideTiming);
     wave2?.animate(tideRise, tideTiming);
     wave3?.animate(tideRise, tideTiming);
-    wave4?.animate(tideFall, tideTiming);
+    wave4?.animate(tideFall, { duration: 1000, easing: "ease-out", fill: "forwards" });
   } else if(n === 4) {
     wave1?.animate(tideRise, tideTiming);
     wave2?.animate(tideRise, tideTiming);
     wave3?.animate(tideRise, tideTiming);
     wave4?.animate(tideRise, tideTiming);
   } else if(n === 0) {
-    wave1?.animate(tideFall, tideTiming);
-    wave2?.animate(tideFall, tideTiming);
-    wave3?.animate(tideFall, tideTiming);
-    wave4?.animate(tideFall, tideTiming);
+    wave1?.animate(tideFall, { duration: 1600, easing: "ease-out", fill: "forwards" });
+    wave2?.animate(tideFall, { duration: 1400, easing: "ease-out", fill: "forwards" });
+    wave3?.animate(tideFall, { duration: 1200, easing: "ease-out", fill: "forwards" });
+    wave4?.animate(tideFall, { duration: 1000, easing: "ease-out", fill: "forwards" });
   }
 }
