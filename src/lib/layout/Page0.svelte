@@ -9,6 +9,7 @@
 
 <Page title="Welcome" offsetX=0>
   <ul class="content justify-center justify-items-center align-middle">
+    <p>Work still in progress.</p>
     <p>This is my personal page, a place for me to show off my work.</p>
     <p>
       Press <IconArrowBigDownLinesFilled class="icon"/>, <IconArrowBigUpLinesFilled class="icon"/> or click <IconHandClick class="icon"/> to navigate the
