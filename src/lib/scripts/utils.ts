@@ -9,7 +9,7 @@ export function tide(n) {
   var wave2 = document.getElementById("wave2");
   var wave3 = document.getElementById("wave3");
   var wave4 = document.getElementById("wave4");
-  const tideRise = [{ transform: "translateY(-81.5vh)" }];
+  const tideRise = [{ transform: "translateY(-167.3vh)" }];
   const tideFall = [{ transform: "translateY(0vh)" }];
   const tideTiming = {
     duration: 1000,
