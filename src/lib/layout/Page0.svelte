@@ -22,6 +22,7 @@
   .gradient-text {
     @apply bg-clip-text text-transparent box-decoration-clone
            bg-gradient-to-br
-           from-primary-300 via-tertiary-500 to-secondary-500;
+           from-primary-300 via-tertiary-500 to-secondary-500
+           hover:drop-shadow-2xl;
   }
 </style>

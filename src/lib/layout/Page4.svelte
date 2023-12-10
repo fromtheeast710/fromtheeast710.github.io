@@ -7,16 +7,16 @@
     This website is made with these incredible technologies:
   </p>
   <div class="text-center">
-    <a href="https://svelte.dev/">
+    <a id="svelte" href="https://svelte.dev/">
       <img src="https://svelte.dev/favicon.png" alt="Svelte"/>
     </a>
-    <a href="https://tailwindcss.com/">
+    <a id="tailwind" href="https://tailwindcss.com/">
       <img
         src="https://tailwindcss.com/favicons/favicon-32x32.png?v=3"
         alt="TailwindCSS"
       />
     </a>
-    <a href="https://www.skeleton.dev/">
+    <a id="skeleton" href="https://www.skeleton.dev/">
       <img src="https://www.skeleton.dev/favicon.png" alt="SkeletonUI"/>
     </a>
   </div>
@@ -29,7 +29,19 @@
   img {
     width: 48px;
     display: inline;
-    margin: 9px;
-    margin-bottom: 29px;
+    margin: 10px;
+    margin-bottom: 30px;
+  }
+  a {
+    pointer-events: all;
+  }
+  a:hover#svelte {
+    filter: drop-shadow(0 0 2em #e26c1eaa);
+  }
+  a:hover#tailwind {
+    filter: drop-shadow(0 0 2em #23ffffaa);
+  }
+  a:hover#skeleton {
+    filter: drop-shadow(0 0 2em #17107eaa);
   }
 </style>

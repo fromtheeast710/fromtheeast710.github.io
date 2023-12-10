@@ -37,6 +37,6 @@
     grid-row-end: 3;
   }
   div > div {
-    @apply card card-hover p-5;
+    @apply card card-hover p-5 pointer-events-auto;
   }
 </style>

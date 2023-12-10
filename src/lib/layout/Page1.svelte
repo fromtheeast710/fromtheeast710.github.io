@@ -4,12 +4,12 @@
 
 <Page title="About me" offsetX=15>
   <p>
-    My name is Phạm Đông Phương and I am a CS student at <b>Western Sydney University</b> in 🇦🇺 <b>Sydney, Australia.</b>
+    My name is Phạm Đông Phương, nicknamed <b>East</b>. I am a Computer Science student at <b>Western Sydney University</b> in 🇦🇺 <b>Sydney, Australia.</b>
   </p>
   <p>
-    I have a passion for learning and technology with a wide range of interests, which include but not limited to: Software Design and Development, Web Design, Robotics, Simulation and AI.
+    I have a passion for <b>learning</b> and <b>technology</b> with a wide range of interests, which include but not limited to: Robotics, Chemistry, Physics Simulations and AI.
   </p>
   <p>
-    I am currently focusing on <b>Web-based Software Development and Design</b> through my Projects.
+    My goal is to become a full-stack software engineer and I am currently focusing on <b>Web-based Software Development and Design</b> through my Projects.
   </p>
 </Page>
