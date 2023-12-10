@@ -21,13 +21,13 @@
 }
 
 .layered-waves {
-	/* aspect-ratio: 960/2700; */
-	width: 100%;
-  bottom: -137vh;
-	background-repeat: no-repeat;
-	background-position: center bottom;
-	background-size: cover;
-  @apply shadow-xl fixed -z-10;
+  width: 100vw;
+  height: 100vh;
+  bottom: 0vh;
+  /* background: center center no-repeat; */
+	/* background-size: cover; */
+  pointer-events: all;
+  @apply shadow-xl fixed -z-10 block;
 }
 .icon {
   display: inline; 
@@ -39,19 +39,18 @@
   left: 50%;
   width: 600px;
   height: 500px;
-  /* display: grid;
-  align-content: center; */
-  position: absolute;
+  position: fixed;
+  pointer-events: none;
   transform: translate(-50%, -50%);
   animation: move-up 1s ease-in-out;
 }
 
-body { height: 100%; overflow: hidden }
+body { height: 100%; overflow: hidden; pointer-events: none; }
 h1 {
   animation: move-in 1s ease-out;
-  @apply h1 p-[4rem] pt-[6rem] ml-8 fixed;
+  @apply h1 p-[4rem] pt-[6rem] ml-8 pointer-events-none relative;
 }
-p { @apply text-xl leading-8 }
+p { @apply text-xl leading-8 pb-7 }
 
 :root {
   --tw-scale-x: 113%;

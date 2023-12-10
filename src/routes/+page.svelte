@@ -21,6 +21,5 @@
 
 <!-- 
   TODO:
-    + SVG alignment and scaling with the screen
     + Better animation logic
 -->
