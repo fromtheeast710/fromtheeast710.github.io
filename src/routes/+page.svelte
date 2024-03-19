@@ -20,6 +20,5 @@
 {/if}
 
 <!-- 
-  TODO:
-    + Better animation logic
+  TODO: Items fade transition
 -->

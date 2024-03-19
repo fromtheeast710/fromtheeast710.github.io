@@ -6,19 +6,21 @@
   export let offsetX;
 </script>
 
-<section class="container" style="padding-top: {offsetX}px">
-  <h1
-    class="h1"
-    in:fly={{ x: 200, duration: 1000, easing: cubicInOut }}
-    out:fly={{ x: -200, duration: 1000, easing: cubicInOut }}
-  >
-    {title}
-  </h1>
-  <section
-    class="content"
-    in:fly={{ y: 200, duration: 1000, easing: cubicInOut }}
-    out:fade
-  >
-    <slot/>
+{#key title}
+  <section class="container" style="padding-top: {offsetX}px">
+    <h1
+      class="h1"
+      in:fly={{ x: 200, duration: 1000, easing: cubicInOut }}
+      out:fade
+    >
+      {title}
+    </h1>
+    <section
+      class="content"
+      in:fly={{ y: 200, duration: 1000, easing: cubicInOut }}
+      out:fade
+    >
+      <slot/>
+    </section>
   </section>
-</section>
+{/key}
