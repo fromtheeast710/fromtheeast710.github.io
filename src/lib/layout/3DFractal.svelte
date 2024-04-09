@@ -2,18 +2,73 @@
   import { onMount } from "svelte";
 
   let canvasEl: HTMLCanvasElement;
-  let angle = 0;
-  const shaderPos = new Float32Array([0.0, 0.5, -0.5, -0.5, 0.5, -0.5]);
-  const shaderCol = new Uint8Array([255, 0, 0, 0, 255, 0, 0, 0, 255]);
+  let scale = 1;
+  let rotate = [0, 0];
+  let isDragging = false;
+  let oldX: any, oldY: any;
+  let dX = 0, dY = 0;
 
-  function handleWheel(event) {
+  const shaderPos = new Float32Array([
+    0.0000, 0.0000, -1.0000,
+    0.0000, 0.9428, 0.3333,
+    -0.8165, -0.4714, 0.3333,
+
+    0.8165, -0.4714, 0.3333,
+    0.0000, 0.9428, 0.3333,
+    -0.8165, -0.4714, 0.3333,
+
+    0.0000, 0.0000, -1.0000,
+    0.0000, 0.9428, 0.3333,
+    -0.8165, -0.4714, 0.3333,
+  ]);
+  const shaderCol = new Uint8Array([
+    255, 0, 0, 0, 255, 0, 0, 0, 255,
+
+    255, 0, 255, 0, 255, 0, 0, 0, 255,
+
+    0, 255, 255, 255, 255, 0, 255, 0, 255
+  ]);
+
+  function hex2Rgb(hex: string): number[] {
+    return hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i
+                       ,(r, g, b) => '#' + r + r + g + g + b + b)
+              .substring(1).match(/.{2}/g)
+              .map(x => parseInt(x, 16));
+  }
+
+  function handleWheel(event: any) {
     if(event.deltaY < 0) {
-      angle += 0.1;
+      scale >= 1 ? scale = 1 : scale += 0.01;
       draw();
     } else if(event.deltaY > 0) {
-      angle -= 0.1;
+      scale <= 0 ? scale = 0 : scale -= 0.01;
       draw();
     }
+  }
+
+  function handleMouseUp() {
+    isDragging = false;
+  }
+
+  function handleMouseDown(event: any) {
+    isDragging = true;
+    oldX = event.pageX, oldY = event.pageY;
+
+    event.preventDefault();
+
+    return false;
+  }
+
+  function handleMouseMove(event: any) {
+    if(!isDragging) return false;
+
+    dX = (event.pageX - oldX)*2*Math.PI/700;
+    dY = (event.pageY - oldY)*2*Math.PI/700;
+    oldX = event.pageX, oldY = event.pageY;
+
+    event.preventDefault();
+
+    draw();
   }
 
   function compileShader(gl, type, src) {
@@ -28,7 +83,7 @@
   }
 
   function createProgram(gl, vertexShader, fragmentShader) {
-    let program = gl.createProgram();
+    const program = gl.createProgram();
 
     gl.attachShader(program, vertexShader);
     gl.attachShader(program, fragmentShader);
@@ -40,12 +95,31 @@
     return program;
   }
 
-  let m3 = {
-    rotation: function(angleInRad) {
+  let m4 = {
+    xRotation: function (angleInRad) {
       let c = Math.cos(angleInRad);
       let s = Math.sin(angleInRad);
-      return [c, -s, 0, s, c, 0, 0, 0, 1];
+
+      return [ 1, 0, 0, 0, 
+               0, c, s, 0, 
+               0, -s, c, 0, 
+               0, 0, 0, 1 ];
     },
+    yRotation: function (angleInRad) {
+      let c = Math.cos(angleInRad);
+      let s = Math.sin(angleInRad);
+
+      return [ c, 0, -s, 0, 
+               0, 1, 0, 0, 
+               s, 0, c, 0, 
+               0, 0, 0, 1 ];
+    },
+    scaling: function (sx, sy, sz) {
+      return [ sx, 0, 0, 0,
+               0, sy, 0, 0,
+               0, 0, sz, 0,
+               0, 0, 0, 1 ];
+    }
   };
 
   function draw() {
@@ -63,13 +137,13 @@
     precision mediump float;
     
     in vec3 vertCol;
-    in vec2 vertPos;
+    in vec4 vertPos;
     out vec3 fragCol;
-    uniform mat3 uMat;
+    uniform mat4 uMat;
     
     void main() {
       fragCol = vertCol;
-      gl_Position = vec4((uMat * vec3(vertPos, 1.)).xy, 0., 1.);
+      gl_Position = uMat * vertPos;
     }`);
     const fragShader = compileShader(gl, gl.FRAGMENT_SHADER, `#version 300 es
     #pragma vscode_glsllint_stage: frag
@@ -87,25 +161,30 @@
     const colAttrLoc = gl.getAttribLocation(prog, "vertCol");
     const matLoc = gl.getUniformLocation(prog, "uMat");
 
-    let mat = m3.rotation(angle);
+    // let mat = m4.xRotation(angle);
+    let mat = m4.xRotation(rotate[0]);
+    mat = m4.yRotation(rotate[1]);
+    mat = m4.scaling(scale, scale, scale);
 
     gl.clearColor(0, 0, 0, 1);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     gl.viewport(0, 0, canvasEl.width, canvasEl.height);
 
+    gl.enable(gl.DEPTH_TEST);
+
     gl.useProgram(prog);
 
     gl.enableVertexAttribArray(posAttrLoc);
     gl.bindBuffer(gl.ARRAY_BUFFER, progGeoBfr);
-    gl.vertexAttribPointer(posAttrLoc, 2, gl.FLOAT, false, 0, 0);
+    gl.vertexAttribPointer(posAttrLoc, 3, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(colAttrLoc);
     gl.bindBuffer(gl.ARRAY_BUFFER, progColBfr);
     gl.vertexAttribPointer(colAttrLoc, 3, gl.UNSIGNED_BYTE, true, 0, 0);
 
-    gl.uniformMatrix3fv(matLoc, false, mat);
+    gl.uniformMatrix4fv(matLoc, false, mat);
 
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    gl.drawArrays(gl.TRIANGLES, 0, 3*3);
   }
 
   onMount(() => draw());
@@ -115,6 +194,9 @@
   width=700
   height=700
   class="bg-blue-500 pointer-events-auto"
-  bind:this={canvasEl}
+  on:mouseup={() => handleMouseUp()}
+  on:mousedown={(e) => handleMouseDown(e)}
+  on:mousemove={(e) => handleMouseMove(e)}
   on:wheel={(e) => handleWheel(e)}
+  bind:this={canvasEl}
 />
