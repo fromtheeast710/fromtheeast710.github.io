@@ -17,7 +17,7 @@
   </div>
 </Page>
 
-<style>
+<style lang="postcss">
   .item-1 {
     grid-column-start: 1;
     grid-column-end: 3;
