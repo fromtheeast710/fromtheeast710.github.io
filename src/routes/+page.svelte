@@ -18,7 +18,3 @@
 {:else if $pageNo == 4}
   <Page4/>
 {/if}
-
-<!-- 
-  TODO: Items fade transition
--->
