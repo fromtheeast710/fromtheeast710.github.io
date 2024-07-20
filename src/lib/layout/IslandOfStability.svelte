@@ -13,7 +13,7 @@
   let yTick = 99.8
 
   function viridisCol(m: string): string {
-    return m == "Stable" ? viridis[0] 
+    return m == "Stable" ? viridis[0]
                          : m == "None"
                          ? ""
                          : Number(m) >= 10e9
@@ -33,14 +33,14 @@
       <button
         type="button"
         class="element-btn"
-        style="grid-column: {el.charge}; 
-               grid-row: {178 - (el.mass - el.charge)}; 
+        style="grid-column: {el.charge};
+               grid-row: {178 - (el.mass - el.charge)};
                background-color: {viridisCol(el.halflife)}"
         use:popup={{ event: 'hover', target: 'el-' + i, placement: 'right' }}
       />
       <section class="card p-2 shadow-lg variant-filled-secondary" data-popup="el-{i}">
         <div class="arrow variant-filled-secondary"/>
-        <span>Element: 
+        <span>Element:
           <span class="numbers">
             <sup>{el.mass}</sup><sub>{el.charge}</sub>
           </span>
@@ -59,14 +59,14 @@
     <line x1=65 y1=650 x2=660 y2=650/>
     {#each elNeutron as _, i }
       <line x1=45 y1={40 + i*yTick} x2=56 y2={40 + i*yTick}/>
-      <text x=40 y={45 + i*yTick} font-size=16 
+      <text x=40 y={45 + i*yTick} font-size=16
         text-anchor="end">{elNeutron[i]}</text>
     {/each}
     {#each elCharge as _, i }
       {#if typeof(elCharge[i]) == "string"}
         <line x1={65 + i*xTick} y1=649 x2={65 + i*xTick} y2=660/>
         <text x={60 + i*xTick} y=683 font-size=16>{elCharge[i]}</text>
-        <text x={58 + i*xTick} y=675 font-size=12 font-style="italic" 
+        <text x={58 + i*xTick} y=675 font-size=12 font-style="italic"
           text-anchor="end">{elCharge[i+1]}</text>
       {/if}
     {/each}
