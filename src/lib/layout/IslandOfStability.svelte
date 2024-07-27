@@ -49,7 +49,7 @@
   {/each}
   </g>
   <g id="info">
-    <rect x=55 y=10 width=265 height=150 rx=15 ry=15 fill="yellow"/>
+    <rect x=55 y=10 width=265 height=150 rx=15 ry=15 fill="teal"/>
     <text x=185 y=65 text-anchor="middle" font-size=35>{$symbol}</text>
     <text x=160 y=50 text-anchor="end" font-size=20>{$mass}</text>
     <text x=160 y=75 text-anchor="end" font-size=20>{$proton}</text>
@@ -77,13 +77,13 @@
 
 <style lang="postcss">
   line {
-    stroke: gray;
+    stroke: white;
     stroke-width: 2;
   }
   text {
-    fill: gray;
+    fill: white;
   }
   #info>text {
-    fill: black;
+    fill: white;
   }
 </style>
