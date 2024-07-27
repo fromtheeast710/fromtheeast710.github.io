@@ -12,7 +12,6 @@
     "postbuild": "purgecss --css build/static/css/*.css --content build/index.html build/static/js/*.js --output build/static/css"
   },
   "devDependencies": {
-    "@floating-ui/dom": "^1.6.8",
     "@skeletonlabs/skeleton": "2.7.1",
     "@skeletonlabs/tw-plugin": "0.3.1",
     "@sveltejs/adapter-static": "^3.0.2",
