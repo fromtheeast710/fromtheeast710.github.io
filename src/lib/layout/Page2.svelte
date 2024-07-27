@@ -4,7 +4,7 @@
   import Fractal3D from "./3DFractal.svelte";
   import IslandOfStability from "./IslandOfStability.svelte";
 
-  let id = 1;
+  let id = 0;
   let carouselEl: HTMLElement;
   let carouselIds = [
     {component: Fractal3D, name: "Fractal3D"},
@@ -20,7 +20,7 @@
 
 <Page title="Gallery" offsetX=10>
   <section
-    class="p-3 grid grid-cols-[auto_1fr_auto] gap-0 items-center pointer-events-auto"
+    class="p-3 pl-12 grid grid-cols-[auto_1fr_auto] gap-0 items-center pointer-events-auto"
     bind:this={carouselEl}
   >
     <svelte:component this={carouselIds[id].component}/>
