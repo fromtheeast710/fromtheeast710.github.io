@@ -23,18 +23,19 @@
 }
 
 .layered-waves {
+  display: block;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   bottom: 0vh;
   /* background: center center no-repeat; */
 	/* background-size: cover; */
+  z-index: -10;
   pointer-events: all;
-  @apply shadow-xl fixed -z-10 block;
 }
 .icon {
   display: inline;
   width: 28px;
-  @apply kbd;
 }
 .content {
   top: 55%;
@@ -51,11 +52,14 @@
 body { height: 100%; overflow: hidden; pointer-events: none; }
 h1 {
   animation: move-in 1s ease-out;
-  @apply h1 p-[4rem] pt-[6rem] ml-8 pointer-events-none relative;
+  padding: 4rem;
+  padding-top: 6rem;
+  margin-left: 2rem;
+  pointer-events: none;
+  position: relative;
 }
-p { @apply text-xl leading-8 pb-7 }
-
-:root {
-  --tw-scale-x: 113%;
-  --tw-scale-y: 113%;
+p {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  padding-bottom: 1.25rem;
 }
