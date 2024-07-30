@@ -38,9 +38,9 @@
         height=3
         fill={viridisCol(el.halflife)}
         on:mouseover={() => {
-          symbol.set(el.symbol),
-          mass.set(el.mass),
-          proton.set(el.charge),
+          symbol.set(el.symbol)
+          mass.set(el.mass)
+          proton.set(el.charge)
           neutron.set(el.mass - el.charge)
           halflife.set(el.halflife)
         }}
