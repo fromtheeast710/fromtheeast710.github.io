@@ -192,8 +192,6 @@
     rotate[0] = event.pageX / 700;
     rotate[1] = event.pageY / 700;
 
-    console.log(rotate[0], rotate[1])
-
     draw();
   }
 
