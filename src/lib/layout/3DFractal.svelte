@@ -189,8 +189,8 @@
 
     oldPos = { x: event.pageX, y: event.pageY };
 
-    rotate[0] = event.pageX / 700;
-    rotate[1] = event.pageY / 700;
+    rotate[0] += dy * 0.01;
+    rotate[1] += dx * 0.01;
 
     draw();
   }
