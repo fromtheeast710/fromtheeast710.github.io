@@ -2,35 +2,44 @@
   import { onMount } from "svelte";
 
   let canvasEl: HTMLCanvasElement;
-  let rotate = [0, 0];
   let isDragging = false;
+  let rotate = [0, 0];
   let oldPos = { x: 0, y: 0 };
 
   const shaderPos = new Float32Array([
-    0.0, 0.0, -1.0,
-    0.0, 0.9428, 0.3333,
-    -0.8165, -0.4714, 0.3333,
+    1, 0, -1/(Math.sqrt(2)),
+    -1, 0, -1/(Math.sqrt(2)),
+    0, 1, 1/(Math.sqrt(2)),
 
-    0.8165, -0.4714, 0.3333,
-    0.0, 0.9428, 0.3333,
-    -0.8165, -0.4714, 0.3333,
+    1, 0, -1/(Math.sqrt(2)),
+    -1, 0, -1/(Math.sqrt(2)),
+    0, -1, 1/(Math.sqrt(2)),
 
-    0.0, 0.0, -1.0,
-    0.0, 0.9428, 0.3333,
-    -0.8165, -0.4714, 0.3333,
+    1, 0, -1/(Math.sqrt(2)),
+    0, 1, 1/(Math.sqrt(2)),
+    0, -1, 1/(Math.sqrt(2)),
+
+    -1, 0, -1/(Math.sqrt(2)),
+    0, 1, 1/(Math.sqrt(2)),
+    0, -1, 1/(Math.sqrt(2)),
   ]);
   const shaderCol = new Uint8Array([
     255, 0, 0,
     0, 255, 0,
     0, 0, 255,
 
-    255, 0, 255,
+    255, 0, 0,
     0, 255, 0,
     0, 0, 255,
 
-    0, 255, 255,
-    255, 255, 0,
-    255, 0, 255,
+    255, 0, 0,
+    0, 255, 0,
+    0, 0, 255,
+
+    255, 0, 0,
+    0, 255, 0,
+    0, 0, 255,
+
   ]);
 
   function compileShader(gl, type, src) {
@@ -58,16 +67,7 @@
   }
 
   let m4 = {
-    identity: function() {
-      return [
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1,
-      ];
-    },
-
-    multiply: function(a, b) {
+    multiply: function(a: any, b: any) {
       let a00 = a[0 * 4 + 0];
       let a01 = a[0 * 4 + 1];
       let a02 = a[0 * 4 + 2];
@@ -117,11 +117,11 @@
         b30 * a00 + b31 * a10 + b32 * a20 + b33 * a30,
         b30 * a01 + b31 * a11 + b32 * a21 + b33 * a31,
         b30 * a02 + b31 * a12 + b32 * a22 + b33 * a32,
-        b30 * a03 + b31 * a13 + b32 * a23 + b33 * a33,
+        b30 * a03 + b31 * a13 + b32 * a23 + b33 * a33
       ];
     },
 
-    xRotation: function(angle) {
+    xRotate: function(angle: any) {
       let c = Math.cos(angle);
       let s = Math.sin(angle);
 
@@ -133,7 +133,7 @@
       ];
     },
 
-    yRotation: function(angle) {
+    yRotate: function(angle: any) {
       let c = Math.cos(angle);
       let s = Math.sin(angle);
 
@@ -143,30 +143,6 @@
         s, 0, c, 0,
         0, 0, 0, 1
       ];
-    },
-
-    zRotation: function(angle) {
-      let c = Math.cos(angle);
-      let s = Math.sin(angle);
-
-      return [
-        c, s, 0, 0,
-        -s, c, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1
-      ];
-    },
-
-    xRotate: function(m, angle) {
-      return m4.multiply(m, m4.xRotation(angle));
-    },
-
-    yRotate: function(m, angle) {
-      return m4.multiply(m, m4.yRotation(angle));
-    },
-
-    zRotate: function(m, angle) {
-      return m4.multiply(m, m4.zRotation(angle));
     },
   };
 
@@ -200,7 +176,7 @@
 
     const progGeoBfr = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, progGeoBfr);
-    gl.bufferData(gl.ARRAY_BUFFER, shaderPos, gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, Float32Array.from(shaderPos, z => z * 1/1.22), gl.STATIC_DRAW);
     const progColBfr = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, progColBfr);
     gl.bufferData(gl.ARRAY_BUFFER, shaderCol, gl.STATIC_DRAW);
@@ -234,10 +210,8 @@
     const colAttrLoc = gl.getAttribLocation(prog, "vertCol");
     const matLoc = gl.getUniformLocation(prog, "uMat");
 
-    let xRotateMat = m4.xRotation(rotate[0]);
-    let yRotateMat = m4.yRotation(rotate[1]);
-
-    // let mat = m4.identity();
+    let xRotateMat = m4.xRotate(rotate[0]);
+    let yRotateMat = m4.yRotate(rotate[1]);
     let mat = m4.multiply(xRotateMat, yRotateMat);
 
     gl.clearColor(0, 0, 0, 1);
@@ -258,7 +232,7 @@
 
     gl.uniformMatrix4fv(matLoc, false, mat);
 
-    gl.drawArrays(gl.TRIANGLES, 0, 2 * 3);
+    gl.drawArrays(gl.TRIANGLES, 0, 4 * 3);
   }
 
   onMount(() => draw());
