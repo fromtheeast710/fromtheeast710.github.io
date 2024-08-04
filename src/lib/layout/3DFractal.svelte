@@ -7,21 +7,21 @@
   let oldPos = { x: 0, y: 0 };
 
   const shaderPos = new Float32Array([
-    1, 0, -1/(Math.sqrt(2)),
-    -1, 0, -1/(Math.sqrt(2)),
-    0, 1, 1/(Math.sqrt(2)),
+    1, 0, -1/Math.sqrt(2),
+    -1, 0, -1/Math.sqrt(2),
+    0, 1, 1/Math.sqrt(2),
 
-    1, 0, -1/(Math.sqrt(2)),
-    -1, 0, -1/(Math.sqrt(2)),
-    0, -1, 1/(Math.sqrt(2)),
+    1, 0, -1/Math.sqrt(2),
+    -1, 0, -1/Math.sqrt(2),
+    0, -1, 1/Math.sqrt(2),
 
-    1, 0, -1/(Math.sqrt(2)),
-    0, 1, 1/(Math.sqrt(2)),
-    0, -1, 1/(Math.sqrt(2)),
+    1, 0, -1/Math.sqrt(2),
+    0, 1, 1/Math.sqrt(2),
+    0, -1, 1/Math.sqrt(2),
 
-    -1, 0, -1/(Math.sqrt(2)),
-    0, 1, 1/(Math.sqrt(2)),
-    0, -1, 1/(Math.sqrt(2)),
+    -1, 0, -1/Math.sqrt(2),
+    0, 1, 1/Math.sqrt(2),
+    0, -1, 1/Math.sqrt(2),
   ]);
   const shaderCol = new Uint8Array([
     255, 0, 0,
@@ -39,7 +39,6 @@
     255, 0, 0,
     0, 255, 0,
     0, 0, 255,
-
   ]);
 
   function compileShader(gl, type, src) {
@@ -176,7 +175,11 @@
 
     const progGeoBfr = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, progGeoBfr);
-    gl.bufferData(gl.ARRAY_BUFFER, Float32Array.from(shaderPos, z => z * 1/1.22), gl.STATIC_DRAW);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      Float32Array.from(shaderPos, z => z * 1/1.22),
+      gl.STATIC_DRAW
+    );
     const progColBfr = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, progColBfr);
     gl.bufferData(gl.ARRAY_BUFFER, shaderCol, gl.STATIC_DRAW);
