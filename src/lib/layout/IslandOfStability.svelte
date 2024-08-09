@@ -5,14 +5,14 @@
 
   let elCharge = ["H", 1, "Ca", 20, "Zr", 40, "Nd", 60, "Hg", 80, "Fm", 100, "Og", 118];
   let elNeutron = [1, 30, 60, 90, 120, 150, 177];
-  let xTick = 450 / 6.01
-  let yTick = 460 / 6.15
+  let xTick = 450 / 6.01;
+  let yTick = 460 / 6.15;
 
-  let symbol = writable("H")
-  let mass = writable(1)
-  let proton = writable(1)
-  let neutron = writable(0)
-  let halflife = writable("Stable")
+  let symbol = writable("H");
+  let mass = writable(1);
+  let proton = writable(1);
+  let neutron = writable(0);
+  let halflife = writable("Stable");
 
   function viridisCol(m: string): string {
     return m == "Stable" ? viridis[0]
@@ -38,11 +38,11 @@
         height=3
         fill={viridisCol(el.halflife)}
         on:mouseover={() => {
-          symbol.set(el.symbol)
-          mass.set(el.mass)
-          proton.set(el.charge)
-          neutron.set(el.mass - el.charge)
-          halflife.set(el.halflife)
+          symbol.set(el.symbol);
+          mass.set(el.mass);
+          proton.set(el.charge);
+          neutron.set(el.mass - el.charge);
+          halflife.set(el.halflife);
         }}
       />
     {/if}
