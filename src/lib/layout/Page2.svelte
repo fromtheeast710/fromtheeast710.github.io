@@ -1,6 +1,5 @@
 <script lang="ts">
   import Page from "./Page.svelte";
-
   import Fractal3D from "./3DFractal.svelte";
   import IslandOfStability from "./IslandOfStability.svelte";
 
