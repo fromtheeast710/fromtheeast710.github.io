@@ -10,6 +10,7 @@
     devShells.${system}.default = mkShell {
       packages = [
         nodejs-slim_22
+        pnpm
       ];
     };
   };
