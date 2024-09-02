@@ -2,7 +2,7 @@
   import Page from "./Page.svelte";
 </script>
 
-<Page title="Projects" offsetX=45>
+<Page title="Projects" offsetX=15>
   <div
     class="content grid gap-4"
     style="grid-template-columns: repeat(4, 9rem); grid-template-rows: repeat(4, 9rem);"
@@ -36,7 +36,10 @@
     grid-row-start: 3;
     grid-row-end: 3;
   }
+
   div > div {
-    @apply card card-hover p-5 pointer-events-auto;
+    padding: 1.25rem;
+    pointer-events: auto;
+    @apply card card-hover;
   }
 </style>

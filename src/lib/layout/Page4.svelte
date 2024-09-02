@@ -1,39 +1,46 @@
 <script>
+  import {
+    IconBrandGithub, IconBrandLinkedin, IconBrandDiscord, IconBrandMatrix, IconBrandLeetcode
+    // IconBrandHackerrank
+  } from "@tabler/icons-svelte";
   import Page from "./Page.svelte";
 </script>
 
-<Page title="Credits" offsetX="95">
-  <p class="pt-[100px]">
-    This website is made with these incredible technologies:
+<Page title="Contacts & Resume" offsetX=35>
+  <p class="pt-[50px]">
+  Check out my other works and contacts at:
   </p>
-  <div class="text-center">
-    <a id="svelte" href="https://svelte.dev/">
-      <img src="https://svelte.dev/favicon.png" alt="Svelte"/>
-    </a>
-    <a id="tailwind" href="https://tailwindcss.com/">
-      <img
-        src="https://tailwindcss.com/favicons/favicon-32x32.png?v=3"
-        alt="TailwindCSS"
-      />
-    </a>
-    <a id="skeleton" href="https://www.skeleton.dev/">
-      <img src="https://www.skeleton.dev/favicon.png" alt="SkeletonUI"/>
-    </a>
-  </div>
-  <p>
-    Many thanks to the developers, contributors and community members that made it possible.
-  </p>
+  <section class="flex p-10 grid-cols-4">
+    <button type="button" class="btn-icon variant-ghost"
+      on:click={() => location.href = "https://github.com/fromtheeast710"}
+    ><IconBrandGithub/></button>
+    <button type="button" class="btn-icon variant-ghost"
+      on:click={() => location.href = "https://www.linkedin.com/in/đông-phương-phạm-a65192270%2f"}
+    ><IconBrandLinkedin/></button>
+    <button type="button" class="btn-icon variant-ghost"
+      on:click={() => location.href = "https://www.discordapp.com/users/yeast710"}
+    ><IconBrandDiscord/></button>
+    <button type="button" class="btn-icon variant-ghost"
+      on:click={() => location.href = "https://matrix.to/#/@fromtheeast:matrix.org"}
+    ><IconBrandMatrix/></button>
+    <button type="button" class="btn-icon variant-ghost"
+      on:click={() => location.href = "https://www.hackerrank.com/profile/fromtheeast710"}
+    ><IconBrandLeetcode/></button>
+  </section>
+
+  <!-- <p>And here's my
+    <a href="https://google.com" class="pointer-events-auto hover:italic hover:underline">Resume</a>.</p> -->
 </Page>
 
 <style>
-  img {
-    width: 48px;
-    display: inline;
-    margin: 10px;
-    margin-bottom: 30px;
-  }
-  a {
+  button {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1rem;
     pointer-events: all;
+    align-items: center;
+    align-self: center;
+    margin:auto;
   }
   a:hover#svelte {
     filter: drop-shadow(0 0 2em #e26c1eaa);

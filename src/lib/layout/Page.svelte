@@ -6,6 +6,7 @@
   export let offsetX;
 </script>
 
+<!-- TODO: Items fade out transition -->
 {#key title}
   <section class="container" style="padding-top: {offsetX}px">
     <h1
