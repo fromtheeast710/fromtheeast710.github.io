@@ -29,7 +29,7 @@
       <button type="button" on:click={() => carouselThumb(i)}>
         <img
           class="rounded-container-token"
-          src="/static/{id.name}.png"
+          src="/{id.name}.png"
           alt="{id.name} thumbnail"
           loading="lazy"
         />
