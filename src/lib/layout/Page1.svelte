@@ -2,20 +2,25 @@
   import Page from "./Page.svelte";
 </script>
 
-<Page title="Skills" offsetX=5>
+<Page title="Skills" offsetX="5">
   <p>
-    I have epxeriences programming with the following languages:
+    I have epxeriences in imperative programming with the following languages:
     <span id="c-lang">C/C++</span>, <span id="py-lang">Python</span>,
-    <span id="rs-lang">Rust</span>, <span id="nix-lang">Nix</span>
-    and the web stack <span id="html-lang">HTML</span>/<span id="css-lang"
-      >CSS</span
-    >/<span id="ts-lang">TS</span>
+    <span id="rs-lang">Rust</span> and the web stack
+    <span id="html-lang">HTML</span>/<span id="css-lang">CSS</span>/<span
+      id="ts-lang">TS</span
+    >
     and <span id="sv-lang">Svelte</span>.
   </p>
 
   <p>
-    Planning to learn:
-    <span id="ml-lang">OCaml</span>, <span id="v-lang">SystemVerilog</span>.
+    I am also interested in functional programming with <span id="nix-lang"
+      >Nix</span
+    >
+    and is planning to learn
+    <span id="ml-lang">OCaml</span>.
+    <!-- I also occasionally play with electronics
+    and want to learn <span id="v-lang">SystemVerilog</span> for FPGAs design. -->
   </p>
 
   <p>
