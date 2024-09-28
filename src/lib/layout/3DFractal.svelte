@@ -1,12 +1,14 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { compileShader, createProgram} from "$lib/scripts/webgl";
 
   let canvasEl: HTMLCanvasElement;
   let isDragging = false;
   let rotate = [0, 0];
   let oldPos = { x: 0, y: 0 };
+  let frac = 1;
 
-  const shaderPos = new Float32Array([
+  let shaderPos = new Float32Array([
     1, 0, -1/Math.sqrt(2),
     -1, 0, -1/Math.sqrt(2),
     0, 1, 1/Math.sqrt(2),
@@ -23,7 +25,7 @@
     0, 1, 1/Math.sqrt(2),
     0, -1, 1/Math.sqrt(2),
   ]);
-  const shaderCol = new Uint8Array([
+  let shaderCol = new Uint8Array([
     255, 0, 0,
     0, 255, 0,
     0, 0, 255,
@@ -40,30 +42,6 @@
     0, 255, 0,
     0, 0, 255,
   ]);
-
-  function compileShader(gl, type, src) {
-    const shader = gl.createShader(type)!;
-    gl.shaderSource(shader, src);
-    gl.compileShader(shader);
-
-    if(!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
-      console.error("Shader failed to compile: " + gl.getShaderInfoLog(shader));
-
-    return shader;
-  }
-
-  function createProgram(gl, vertexShader, fragmentShader) {
-    const program = gl.createProgram();
-
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-
-    if(!gl.getProgramParameter(program, gl.LINK_STATUS))
-      console.error("Program failed to link: " + gl.getProgramInfoLog(program));
-
-    return program;
-  }
 
   let m4 = {
     multiply: function(a: any, b: any) {
@@ -145,6 +123,28 @@
     },
   };
 
+  function handleWheel(event: any) {
+    function calcMidPoint(a: any, b: any, c: any) {
+      return [(a + b)/2, (b + c)/2, (c + a)/2];
+    }
+
+    if(event.deltaY < 0) {
+      frac >= 9 ? frac = 9 : frac += 1;
+
+      // shaderPos = new Float32Array([...shaderPos, calcMidPoint(shaderPos[1], shaderPos[2], shaderPos[3]))]);
+      // shaderCol = new Uint8Array([...shaderCol, ]);
+      console.log(shaderPos);
+
+      draw();
+    } else {
+      frac <= 1 ? frac = 1 : frac -= 1;
+
+      console.log(frac);
+
+      draw();
+    }
+  }
+
   function handleMouseUp() {
     isDragging = false;
   }
@@ -196,7 +196,7 @@
     void main() {
       fragCol = vertCol;
       gl_Position = uMat * vertPos;
-    }`,);
+    }`);
     const fragShader = compileShader(gl, gl.FRAGMENT_SHADER, `#version 300 es
     #pragma vscode_glsllint_stage: frag
     precision mediump float;
@@ -206,7 +206,7 @@
 
     void main() {
       outCol = vec4(fragCol, 1.);
-    }`,);
+    }`);
 
     const prog = createProgram(gl, vertShader, fragShader);
     const posAttrLoc = gl.getAttribLocation(prog, "vertPos");
@@ -235,7 +235,7 @@
 
     gl.uniformMatrix4fv(matLoc, false, mat);
 
-    gl.drawArrays(gl.TRIANGLES, 0, 4 * 3);
+    gl.drawArrays(gl.TRIANGLES, 0, frac *  4 * 3);
   }
 
   onMount(() => draw());
@@ -245,6 +245,7 @@
   width=500
   height=500
   class="bg-blue-500 pointer-events-auto"
+  on:wheel={(e) => handleWheel(e)}
   on:mouseup={() => handleMouseUp()}
   on:mousedown|preventDefault={(e) => handleMouseDown(e)}
   on:mousemove|preventDefault={(e) => handleMouseMove(e)}
