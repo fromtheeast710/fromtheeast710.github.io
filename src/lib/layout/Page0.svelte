@@ -26,7 +26,8 @@
     <p>
       I am currently focusing on <b
         >programminng in <i class="text-orange-500">Rust</i></b
-      >
+      >,
+      <b>using Web Framework for multi-platform applications</b>
       and <b>the ROS robotics stack</b> through my projects.
     </p>
 
