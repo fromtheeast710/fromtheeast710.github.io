@@ -7,55 +7,45 @@
     IconBrandHackerrank,
   } from "@tabler/icons-svelte";
   import Page from "./Page.svelte";
+  import Btn from "./Btn.svelte";
+
+  let contacts = [
+    { link: "https://github.com/fromtheeast710", icon: IconBrandGithub },
+    {
+      link: "https://www.linkedin.com/in/đông-phương-phạm-a65192270%2f",
+      icon: IconBrandLinkedin,
+    },
+    {
+      link: "https://www.discordapp.com/users/yeast710",
+      icon: IconBrandDiscord,
+    },
+    {
+      link: "https://matrix.to/#/@fromtheeast:matrix.org",
+      icon: IconBrandMatrix,
+    },
+    {
+      link: "https://www.hackerrank.com/profile/fromtheeast710",
+      icon: IconBrandHackerrank,
+    },
+  ];
 </script>
 
 <Page title="Contacts & Resume" offsetX="35">
   <p class="pt-[50px]">Check out my other works and contacts at:</p>
-  <section class="flex p-10 grid-cols-4">
-    <button
-      type="button"
-      class="btn-icon variant-ghost"
-      on:click={() => (location.href = "https://github.com/fromtheeast710")}
-    >
-      <IconBrandGithub />
-    </button>
-    <button
-      type="button"
-      class="btn-icon variant-ghost"
-      on:click={() =>
-        (location.href =
-          "https://www.linkedin.com/in/đông-phương-phạm-a65192270%2f")}
-    >
-      <IconBrandLinkedin />
-    </button>
-    <button
-      type="button"
-      class="btn-icon variant-ghost"
-      on:click={() =>
-        (location.href = "https://www.discordapp.com/users/yeast710")}
-    >
-      <IconBrandDiscord />
-    </button>
-    <button
-      type="button"
-      class="btn-icon variant-ghost"
-      on:click={() =>
-        (location.href = "https://matrix.to/#/@fromtheeast:matrix.org")}
-    >
-      <IconBrandMatrix />
-    </button>
-    <button
-      type="button"
-      class="btn-icon variant-ghost"
-      on:click={() =>
-        (location.href = "https://www.hackerrank.com/profile/fromtheeast710")}
-    >
-      <IconBrandHackerrank />
-    </button>
+  <section class="flex p-10 grid-cols-[{contacts.length}]">
+    {#each contacts as c}
+      <Btn link={c.link} icon={c.icon} />
+    {/each}
   </section>
 
-  <!-- <p>And here's my
-    <a href="https://google.com" class="pointer-events-auto hover:italic hover:underline">Resume</a>.</p> -->
+  <p>
+    And here's my
+    <a
+      href="https://drive.proton.me/urls/HHHBGAE384#BcTc0yhX5Ook"
+      class="pointer-events-auto transition-colors hover:text-red-300 hover:underline hover:decoration-wavy"
+      >Resume</a
+    >.
+  </p>
 </Page>
 
 <style>

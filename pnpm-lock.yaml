@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@rollup/rollup-linux-x64-gnu':
+        specifier: ^4.40.0
+        version: 4.40.0
       '@skeletonlabs/skeleton':
         specifier: 2.7.1
         version: 2.7.1(svelte@4.2.19)
@@ -304,6 +307,11 @@ packages:
 
   '@rollup/rollup-linux-x64-gnu@4.22.5':
     resolution: {integrity: sha512-N0jPPhHjGShcB9/XXZQWuWBKZQnC1F36Ce3sDqWpujsGjDz/CQtOL9LgTrJ+rJC8MJeesMWrMWVLKKNR/tMOCA==}
+    cpu: [x64]
+    os: [linux]
+
+  '@rollup/rollup-linux-x64-gnu@4.40.0':
+    resolution: {integrity: sha512-RcDGMtqF9EFN8i2RYN2W+64CdHruJ5rPqrlYw+cgM3uOVPSsnAQps7cpjXe9be/yDp8UC7VLoCoKC8J3Kn2FkQ==}
     cpu: [x64]
     os: [linux]
 
@@ -1464,6 +1472,8 @@ snapshots:
 
   '@rollup/rollup-linux-x64-gnu@4.22.5':
     optional: true
+
+  '@rollup/rollup-linux-x64-gnu@4.40.0': {}
 
   '@rollup/rollup-linux-x64-musl@4.22.5':
     optional: true
