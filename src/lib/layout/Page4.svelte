@@ -41,7 +41,7 @@
   <p>
     And here's my
     <a
-      href="https://drive.proton.me/urls/HHHBGAE384#BcTc0yhX5Ook"
+      href="https://drive.proton.me/urls/8NE5036BER#MxCjhigfsIEy"
       class="pointer-events-auto transition-colors hover:text-red-300 hover:underline hover:decoration-wavy"
       >Resume</a
     >.
