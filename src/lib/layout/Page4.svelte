@@ -12,7 +12,7 @@
   let contacts = [
     { link: "https://github.com/fromtheeast710", icon: IconBrandGithub },
     {
-      link: "https://www.linkedin.com/in/đông-phương-phạm-a65192270%2f",
+      link: "https://www.linkedin.com/in/phuong-pham-cs",
       icon: IconBrandLinkedin,
     },
     {
